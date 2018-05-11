@@ -16,5 +16,23 @@ namespace FarmingGame
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int value = 10;
+            JustALoop(value);
+
+        }
+
+        public static void JustALoop(int value)
+        {
+            for (int i = 0; i < value; i++)
+            {
+                if (i > 5)
+                {
+                    Console.WriteLine("I need to test a test");
+                }
+            }
+        }
     }
 }
