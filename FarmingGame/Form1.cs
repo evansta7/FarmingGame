@@ -44,7 +44,7 @@ namespace FarmingGame
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
