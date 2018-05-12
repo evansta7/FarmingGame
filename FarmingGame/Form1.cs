@@ -22,6 +22,7 @@ namespace FarmingGame
             string username = textBox1.Text;
             string password = textBox2.Text;
             CheckCredentials(username, password);
+
         }
 
         private void CheckCredentials(string username, string password )
