@@ -21,27 +21,27 @@ namespace FarmingGame
         {
             string username = textBox1.Text;
             string password = textBox2.Text;
-            if (username == "admin" && password == "password")
-            {
-                MessageBox.Show(string.Format("you are now logged in as admin. Welcome {0}",username));
-                Form2 form2 = new Form2();
-                form2.Show();
-                this.Hide();
+            CheckCredentials(username, password);
+        }
 
-            }
-            else if (username == "administrator" && password == "administratorPassword") {
-                MessageBox.Show(string.Format("you are now logged in as administrator. Welcome {0}", username));
-                Form2 form2 = new Form2();
-                form2.Show();
-                this.Hide();
+        private void CheckCredentials(string username, string password )
+        {
+            if (username == "admin" && password == "password" || username == "administrator" && password == "administratorPassword")
+            {
+                ShowMessageAndForm(username);
             }
             else
             {
                 MessageBox.Show("Login failed, try again u useless potato");
             }
+        }
 
-
-
+        private void ShowMessageAndForm(string username)
+        {
+            MessageBox.Show(string.Format("you are now logged in as admin. Welcome {0}", username));
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
