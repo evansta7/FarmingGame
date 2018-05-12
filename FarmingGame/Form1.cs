@@ -37,7 +37,7 @@ namespace FarmingGame
             }
             else
             {
-                MessageBox.Show("Login failed, please try again");
+                MessageBox.Show("Login failed, try again u useless potato");
             }
 
 
