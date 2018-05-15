@@ -22,6 +22,7 @@ namespace FarmingGame
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
+
             User userLogin = new User(username, password);
             List<User> userLoginCredentials = userLogin.GetLoginCredentials();
             foreach (User item in userLoginCredentials)
