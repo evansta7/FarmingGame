@@ -18,31 +18,20 @@ namespace FarmingGame
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
-            string username = textBox1.Text;
-            string password = textBox2.Text;
-            CheckCredentials(username, password);
-        }
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
 
-        private void CheckCredentials(string username, string password )
-        {
-            if (username == "admin" && password == "password" || username == "administrator" && password == "administratorPassword")
+            User userLogin = new User(username, password);
+            List<User> userLoginCredentials = userLogin.GetLoginCredentials();
+            foreach (User item in userLoginCredentials)
             {
-                ShowMessageAndForm(username);
+                if (item.Equals(userLogin))
+                {
+                    MessageBox.Show("Welcome to the Farming Game", "Welcome", MessageBoxButtons.OK);
+                }
             }
-            else
-            {
-                MessageBox.Show("Login failed, try again u useless potato");
-            }
-        }
-
-        private void ShowMessageAndForm(string username)
-        {
-            MessageBox.Show(string.Format("you are now logged in as admin. Welcome {0}", username));
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Hide();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
