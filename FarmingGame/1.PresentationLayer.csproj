@@ -88,5 +88,11 @@
   <ItemGroup>
     <Content Include="Database\20180511\TestScript.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\2.BusinessLogicLayer\2.BusinessLogicLayer.csproj">
+      <Project>{c86b33da-22b5-4608-822a-ee24140e8c44}</Project>
+      <Name>2.BusinessLogicLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

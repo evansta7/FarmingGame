@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmingGame", "FarmingGame\FarmingGame.csproj", "{6EC551E9-1078-4C33-AE04-BA6FFA3540F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1.PresentationLayer", "FarmingGame\1.PresentationLayer.csproj", "{6EC551E9-1078-4C33-AE04-BA6FFA3540F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2.BusinessLogicLayer", "2.BusinessLogicLayer\2.BusinessLogicLayer.csproj", "{C86B33DA-22B5-4608-822A-EE24140E8C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3.DataAccessLayer", "3.DataAccessLayer\3.DataAccessLayer.csproj", "{3187342D-A426-470F-90D7-CD9314B1DC08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{6EC551E9-1078-4C33-AE04-BA6FFA3540F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC551E9-1078-4C33-AE04-BA6FFA3540F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EC551E9-1078-4C33-AE04-BA6FFA3540F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C86B33DA-22B5-4608-822A-EE24140E8C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C86B33DA-22B5-4608-822A-EE24140E8C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C86B33DA-22B5-4608-822A-EE24140E8C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C86B33DA-22B5-4608-822A-EE24140E8C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3187342D-A426-470F-90D7-CD9314B1DC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3187342D-A426-470F-90D7-CD9314B1DC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3187342D-A426-470F-90D7-CD9314B1DC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3187342D-A426-470F-90D7-CD9314B1DC08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
