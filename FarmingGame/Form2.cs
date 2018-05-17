@@ -19,7 +19,6 @@ namespace FarmingGame
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            // this is a comment
             txtUsername.Clear();
             txtPassword.Clear();
             txtEmail.Clear();
