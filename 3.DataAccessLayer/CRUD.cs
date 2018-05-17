@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 
 namespace _3.DataAccessLayer
@@ -41,6 +42,55 @@ namespace _3.DataAccessLayer
             
             conn.Close();
             return data;
+        }
+
+        public void InsertIntoDatabase(string tableName, string fields, string values)
+        {
+            SqlConnection conn = new SqlConnection(connection.ToString());
+
+            string query = string.Format("INSERT INTO {0} ({1}) VALUES ({2})", tableName, fields, values);
+            using (conn)
+            {
+                conn.Open();
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                reader.Close();
+                conn.Close();
+            }
+        }
+
+        public void DeleteFromDatabase(string tableName, string condition)
+        {
+            SqlConnection conn = new SqlConnection(connection.ToString());
+
+            try
+            {
+                conn.Open();
+                string query = string.Format("DELETE FROM {0} WHERE {1}", tableName, condition);
+                SqlCommand command = new SqlCommand(query, conn);
+                command.ExecuteNonQuery();
+                MessageBox.Show("Item was deleted");
+            }
+            //going to put a custom exception here
+            catch (SqlException se)
+            {
+                MessageBox.Show(se.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void UpdateDatabase(string tableName, string newData, string condition)
+        {
+            SqlConnection conn = new SqlConnection(connection.ToString());
+
+            conn.Open();
+            string query = string.Format("UPDATE {0} SET {1} WHERE {2}", tableName, newData, condition);
+            SqlCommand command = new SqlCommand(query, conn);
+            command.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }
