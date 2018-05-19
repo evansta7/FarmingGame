@@ -13,10 +13,6 @@ namespace _2.BusinessLogicLayer
         private string userID;
         private string username;
         private string password;
-        private string name;
-        private string surname;
-        private string gender;
-        private string dob;
 
         public string UserID
         {
@@ -37,44 +33,17 @@ namespace _2.BusinessLogicLayer
             set { password = value; }
         }
 
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public string Surname
-        {
-            get { return surname; }
-            set { surname = value; }
-        }
-
-        public string Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
-        public string Dob
-        {
-            get { return dob; }
-            set { dob = value; }
-        }
 
         public User()
         {
 
         }
 
-        public User(string userID, string username, string password, string name, string surname, string gender, string dob)
+        public User(string userID, string username, string password)
         {
             this.userID = userID;
             this.username = username;
             this.password = password;
-            this.name = name;
-            this.surname = surname;
-            this.gender = gender;
-            this.dob = dob;
         }
 
         public User(string username, string password)
@@ -87,7 +56,7 @@ namespace _2.BusinessLogicLayer
         {
             List<User> loginCredentials = new List<User>();
             CRUD crud = new CRUD();
-            DataSet data = crud.ReadFromDatabase("Username, Password", "tblUser");
+            DataSet data = crud.Read("Username, Password", "tblUser");
             foreach (DataRow item in data.Tables["tblUser"].Rows)
             {
                 loginCredentials.Add(new User(item["Username"].ToString(), item["Password"].ToString()));
@@ -113,6 +82,12 @@ namespace _2.BusinessLogicLayer
             }
             User user = (User)obj;
             return (this.username == user.username) && (this.password == user.password);
+        }
+
+        public void InsertUser()
+        {
+            CRUD crud = new CRUD();
+            crud.Insert("tblUser", "Username, Password", "")
         }
     }
 }
