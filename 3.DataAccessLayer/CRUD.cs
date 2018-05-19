@@ -100,8 +100,15 @@ namespace _3.DataAccessLayer
                 conn.Open();
                 string query = string.Format("DELETE FROM {0} WHERE {1}", tableName, condition);
                 SqlCommand command = new SqlCommand(query, conn);
-                command.ExecuteNonQuery();
-                return true;
+                int hasChanges = command.ExecuteNonQuery();
+                if (hasChanges == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (SqlException)
             {
@@ -128,8 +135,16 @@ namespace _3.DataAccessLayer
                 conn.Open();
                 string query = string.Format("UPDATE {0} SET {1} WHERE {2}", tableName, newData, condition);
                 SqlCommand command = new SqlCommand(query, conn);
-                command.ExecuteNonQuery();
-                return true;
+                int hasChanges = command.ExecuteNonQuery();
+                if (hasChanges == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             catch (SqlException)
             {
