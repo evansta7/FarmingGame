@@ -27,9 +27,6 @@ namespace FarmingGame
             bool userCheck = user.UserLogin(username, password);
             if (userCheck)
             {
-            bool userCheck = user.UserLogin(username, password);
-            if (userCheck)
-            {
                 this.Hide();
             }
             else
