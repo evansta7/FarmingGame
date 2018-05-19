@@ -23,11 +23,11 @@ namespace FarmingGame
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             User user = new User();
-            Form2 form2 = new Form2();
+            
             bool userCheck = user.UserLogin(username, password);
             if (userCheck)
             {
-                form2.Show();
+                // redirect to home page
                 this.Hide();
             }
             else

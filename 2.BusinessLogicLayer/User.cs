@@ -86,5 +86,7 @@ namespace _2.BusinessLogicLayer
             bool successfulRegistration = crud.Insert("tblUser", "Username, Password", string.Format("{0},{1}", user.username, user.password));
             return successfulRegistration;
         }
+
+        
     }
 }
