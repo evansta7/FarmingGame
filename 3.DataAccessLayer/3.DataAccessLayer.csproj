@@ -46,9 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\20180511\TestScript.sql" />
+    <Content Include="Database\20180519\dbFarmGame.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database\20180512\FarmingDb.bak" />
+    <None Include="Database\20180519\dbFarmGame.bak" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
