@@ -83,7 +83,7 @@ namespace _2.BusinessLogicLayer
         public bool CheckIfUserExists(string username)
         {
             CRUD crud = new CRUD();
-            DataSet user = crud.Read("UserID", "tblUser", "WHERE Username = " + username);
+            DataSet user = crud.Read("UserID", "tblUser", string.Format("WHERE Username = '{0}'",username));
             foreach (DataRow item in user.Tables["tblUser"].Rows)
             {
                 if (item != null)
@@ -99,7 +99,7 @@ namespace _2.BusinessLogicLayer
             CRUD crud = new CRUD();
             if (!user.CheckIfUserExists(user.username))
             {
-                bool successfulRegistration = crud.Insert("tblUser", "Username, Password", string.Format("{0},{1}", user.username, user.password));
+                bool successfulRegistration = crud.Insert("tblUser", "Username, Password", string.Format("'{0}','{1}'", user.username, user.password));
                 return successfulRegistration;
             }
             return false;

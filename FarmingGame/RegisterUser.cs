@@ -23,12 +23,19 @@ namespace FarmingGame
             string username = txtEmail.Text;
             string password = txtPassword.Text;
             string confirm = txtPassword2.Text;
- 
+
             if (password == confirm && password != null)
             {
                 User user = new User(username, password);
                 user.RegisterUser(user);
-            }   
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form1 login = new Form1();
+            login.Show();
+            this.Hide();
         }
     }
 }

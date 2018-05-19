@@ -23,11 +23,9 @@ namespace FarmingGame
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             User user = new User();
-            Form2 form2 = new Form2();
             bool userCheck = user.UserLogin(username, password);
             if (userCheck)
             {
-                form2.Show();
                 this.Hide();
             }
             else
@@ -39,6 +37,13 @@ namespace FarmingGame
         private void btnExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void llblRegister_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegisterUser frmRegisterUser = new RegisterUser();
+            frmRegisterUser.Show();
+            this.Hide();
         }
     }
 }
