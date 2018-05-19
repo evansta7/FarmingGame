@@ -17,8 +17,6 @@ namespace _3.DataAccessLayer
 
         public CRUD()
         {
-
-
             //Still need to figure this part out... Is it the same for all computers or how are we going to make it work
             connection.DataSource = @"";
             connection.InitialCatalog = "";
@@ -32,9 +30,6 @@ namespace _3.DataAccessLayer
         /// <param name="tableName"></param>
         /// <param name="condition"></param>
         /// <returns></returns>
-
-        //Method to extract data from the database
-        // query format: SELECT (fields) FROM (tableName) (WHERE condition)
         public DataSet Read(string fields, string tableName, string condition = "")
         {
             SqlConnection conn = new SqlConnection(connection.ToString());
@@ -70,7 +65,6 @@ namespace _3.DataAccessLayer
         public bool Insert(string tableName, string fields, string values)
         {
             SqlConnection conn = new SqlConnection(connection.ToString());
-
             string query = string.Format("INSERT INTO {0} ({1}) VALUES ({2})", tableName, fields, values);
             try
             {
@@ -83,10 +77,9 @@ namespace _3.DataAccessLayer
                     return true;
                 }
             }
-
             catch (SqlException)
             {
-                return false;
+                throw;
             }
             finally
             {
@@ -102,7 +95,6 @@ namespace _3.DataAccessLayer
         public bool Delete(string tableName, string condition)
         {
             SqlConnection conn = new SqlConnection(connection.ToString());
-
             try
             {
                 conn.Open();
@@ -113,7 +105,7 @@ namespace _3.DataAccessLayer
             }
             catch (SqlException)
             {
-                return false;
+                throw;
             }
             finally
             {
@@ -131,7 +123,6 @@ namespace _3.DataAccessLayer
         public bool Update(string tableName, string newData, string condition = "")
         {
             SqlConnection conn = new SqlConnection(connection.ToString());
-
             try
             {
                 conn.Open();
@@ -140,16 +131,14 @@ namespace _3.DataAccessLayer
                 command.ExecuteNonQuery();
                 return true;
             }
-
             catch (SqlException)
             {
-                return false;
+                throw;
             }
             finally
             {
                 conn.Close();
             }
-
         }
     }
 }
