@@ -24,13 +24,11 @@ namespace FarmingGame
             string password = txtPassword.Text;
             string confirm = txtPassword2.Text;
  
-            if (password == confirm)
+            if (password == confirm && password != null)
             {
                 User user = new User(username, password);
-                user.InsertUser();
-            }
-
-           
+                user.RegisterUser(user);
+            }   
         }
     }
 }

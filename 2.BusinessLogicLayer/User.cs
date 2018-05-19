@@ -84,10 +84,11 @@ namespace _2.BusinessLogicLayer
             return (this.username == user.username) && (this.password == user.password);
         }
 
-        public void InsertUser()
+        public bool RegisterUser(User user)
         {
             CRUD crud = new CRUD();
-            crud.Insert("tblUser", "Username, Password", "")
+            bool successfulRegistration = crud.Insert("tblUser", "Username, Password", string.Format("{0},{1}", user.username, user.password));
+            return successfulRegistration;
         }
     }
 }
