@@ -18,8 +18,8 @@ namespace _3.DataAccessLayer
         public CRUD()
         {
             //Still need to figure this part out... Is it the same for all computers or how are we going to make it work
-            connection.DataSource = @"";
-            connection.InitialCatalog = "";
+            connection.DataSource = @"MSI";
+            connection.InitialCatalog = "dbFarmGame";
             connection.IntegratedSecurity = true;
         }
 
