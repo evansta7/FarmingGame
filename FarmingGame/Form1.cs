@@ -22,15 +22,17 @@ namespace FarmingGame
         {
             string username = txtUsername.Text;
             string password = txtPassword.Text;
-
-            User userLogin = new User(username, password);
-            List<User> userLoginCredentials = userLogin.GetLoginCredentials();
-            foreach (User item in userLoginCredentials)
+            User user = new User();
+            Form2 form2 = new Form2();
+            bool userCheck = user.UserLogin(username, password);
+            if (userCheck)
             {
-                if (item.Equals(userLogin))
-                {
-                    MessageBox.Show("Welcome to the Farming Game", "Welcome", MessageBoxButtons.OK);
-                }
+                form2.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Username or Password incorrect", "Login error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error);
             }
         }
 

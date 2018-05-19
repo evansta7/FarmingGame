@@ -161,5 +161,12 @@ namespace _3.DataAccessLayer
                 conn.Close();
             }
         }
+
+        public DataRow[] GetSingleRow(DataSet data, string tableName, string condition="")
+        {
+            DataRow[] dataRow;
+            dataRow = data.Tables[tableName].Select(condition);
+            return dataRow;
+        }
     }
 }
