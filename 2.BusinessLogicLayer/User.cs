@@ -56,7 +56,7 @@ namespace _2.BusinessLogicLayer
         {
             CRUD crud = new CRUD();
             string condition = string.Format("WHERE Username = '{0}' AND Password = '{1}'", username, password);
-            DataSet data = crud.Read("Username, Password", "tblUser",condition);
+            DataSet data = crud.Read("Username, Password", "tblUser", condition);
             if (data.Tables["tblUser"].Rows.Count > 0)
             {
                 return true;
@@ -80,11 +80,29 @@ namespace _2.BusinessLogicLayer
             return (this.username == user.username) && (this.password == user.password);
         }
 
+        public bool CheckIfUserExists(string username)
+        {
+            CRUD crud = new CRUD();
+            DataSet user = crud.Read("UserID", "tblUser", "WHERE Username = " + username);
+            foreach (DataRow item in user.Tables["tblUser"].Rows)
+            {
+                if (item != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public bool RegisterUser(User user)
         {
             CRUD crud = new CRUD();
-            bool successfulRegistration = crud.Insert("tblUser", "Username, Password", string.Format("{0},{1}", user.username, user.password));
-            return successfulRegistration;
+            if (!user.CheckIfUserExists(user.username))
+            {
+                bool successfulRegistration = crud.Insert("tblUser", "Username, Password", string.Format("{0},{1}", user.username, user.password));
+                return successfulRegistration;
+            }
+            return false;
         }
     }
 }
