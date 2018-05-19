@@ -83,16 +83,16 @@ namespace _2.BusinessLogicLayer
             this.password = password;
         }
         // Method to extract the username and password from the data access layer
-        public List<User> GetLoginCredentials()
+        public bool UserLogin(string username, string password)
         {
-            List<User> loginCredentials = new List<User>();
             CRUD crud = new CRUD();
-            DataSet data = crud.ReadFromDatabase("Username, Password", "tblUser");
-            foreach (DataRow item in data.Tables["tblUser"].Rows)
+            string condition = string.Format("WHERE Username = '{0}' AND Password = '{1}'", username, password);
+            DataSet data = crud.Read("Username, Password", "tblUser",condition);
+            if (data.Tables["tblUser"].Rows.Count > 0)
             {
-                loginCredentials.Add(new User(item["Username"].ToString(), item["Password"].ToString()));
+                return true;
             }
-            return loginCredentials;
+            return false;
         }
 
         public override int GetHashCode()
@@ -103,11 +103,7 @@ namespace _2.BusinessLogicLayer
         // Equals method to determine if Login credentials are valid
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
-            if (!(obj is User))
+            if (obj == null || !(obj is User))
             {
                 return false;
             }
