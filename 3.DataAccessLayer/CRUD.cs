@@ -72,9 +72,15 @@ namespace _3.DataAccessLayer
                 {
                     conn.Open();
                     SqlCommand command = new SqlCommand(query, conn);
-                    SqlDataReader reader = command.ExecuteReader();
-                    reader.Close();
-                    return true;
+                    int hasChanges = command.ExecuteNonQuery();
+                    if (hasChanges == 1)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch (SqlException)
