@@ -23,6 +23,10 @@ namespace FarmingGame
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             User user = new User();
+
+            bool userCheck = user.UserLogin(username, password);
+            if (userCheck)
+            {
             bool userCheck = user.UserLogin(username, password);
             if (userCheck)
             {
